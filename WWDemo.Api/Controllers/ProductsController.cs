@@ -29,6 +29,7 @@ namespace WWDemo.Api.Controllers
 				Name = request.Name,
 				Price = request.Price,
 				SerialNumber = request.SerialNumber,
+				Category = request.Category,
             });
 
             return Ok();
@@ -43,12 +44,12 @@ namespace WWDemo.Api.Controllers
 			return result;
 		}
 
-		[HttpGet("serial-number")]
-		public async Task<IActionResult> GetProductBySerialNumber([FromRoute(Name = "serial-number")]int serialNumber)
+		[HttpGet("{serial-number}")]
+		public async Task<ProductRepresentation> GetProductBySerialNumber([FromRoute(Name = "serial-number")]string? serialNumber)
 		{
-            var result = await _mediator.Send(new GetProductBySerialNumberQuery());// map serial number
+            var result = await _mediator.Send(new GetProductBySerialNumberQuery(serialNumber));// map serial number
             
-			return Ok();
+			return result;
 		}
 
 		[HttpDelete]
