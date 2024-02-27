@@ -11,5 +11,6 @@
 		public string? Quantity { get; set; }
         public int? Amount { get; set; }
 		public string? UnitPrice { get; set;}
+        public string? Comment { get; set; }
     }
 }
