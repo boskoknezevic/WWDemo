@@ -15,5 +15,6 @@
 		public string? City { get; set; }
 		public string? Address { get; set; }
 		public string? Fax { get; set;}
+		public string? FaxNumber { get;set; }
     }
 }
