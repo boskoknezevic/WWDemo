@@ -12,5 +12,6 @@
         public int? Amount { get; set; }
 		public string? UnitPrice { get; set;}
         public string? Comment { get; set; }
+		public string? City { get; set; }
     }
 }
