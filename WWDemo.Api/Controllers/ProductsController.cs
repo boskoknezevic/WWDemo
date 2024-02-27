@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using System.Xml.Linq;
 using WWDemo.Api.Requests;
 using WWDemo.Application.DTOs;
 using WWDemo.Application.Products.Commands.AddProduct;
@@ -57,5 +58,22 @@ namespace WWDemo.Api.Controllers
 		{
 			return Ok();
 		}
-	}
+
+        [HttpPut("{serial-number}")]
+        [ProducesResponseType(200)]
+        [ProducesResponseType(400)]
+        public async Task<IActionResult> UpdateProduct(AddProductRequest request, [FromRoute(Name = "serial-number")] string serialNumber)
+        {
+
+            await _mediator.Send(new UpdateProductCommand
+            {
+                Name = request.Name,
+                Price = request.Price,
+                SerialNumber = serialNumber,
+                Category = request.Category,
+            });
+
+            return Ok();
+        }
+    }
 }
