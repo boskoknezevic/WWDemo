@@ -4,6 +4,7 @@ using System.Xml.Linq;
 using WWDemo.Api.Requests;
 using WWDemo.Application.DTOs;
 using WWDemo.Application.Products.Commands.AddProduct;
+using WWDemo.Application.Products.Queries.DeleteProductBySerialNumber;
 using WWDemo.Application.Products.Queries.GetAllProducts;
 using WWDemo.Application.Products.Queries.GetProductBySerialNumber;
 
@@ -53,8 +54,8 @@ namespace WWDemo.Api.Controllers
 			return result;
 		}
 
-		[HttpDelete]
-		public async Task<IActionResult> DeleteProduct()
+        [HttpDelete("{serial-number}")]
+        public async Task<IActionResult> DeleteProduct([FromRoute(Name = "serial-number")]string? serialNumber)
 		{
 			return Ok();
 		}
